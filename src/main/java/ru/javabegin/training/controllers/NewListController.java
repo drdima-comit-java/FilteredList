@@ -6,12 +6,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndViewDefiningException;
 import ru.javabegin.training.impls.BaseListDaoSqlite;
 import ru.javabegin.training.objects.User;
 import ru.javabegin.training.objects.softList.BaseList;
+import ru.javabegin.training.objects.softList.FilteredList;
 import ru.javabegin.training.objects.softList.NewList;
 
 import javax.servlet.http.HttpSession;
@@ -55,4 +58,26 @@ public class NewListController {
         Map<String, String> baseLists = blSql.getBaseListsMap(  ((User)session.getAttribute("user")).getIduser() );
         return baseLists;
     }
+
+
+    @RequestMapping(value = "/new-list-add", method = RequestMethod.POST)
+    public ModelAndView newListAdd(HttpSession session, @ModelAttribute NewList newList) {
+    //public ModelAndView newListAdd(HttpSession session, @ModelAttribute NewList newList) {
+    //public ModelAndView newListAdd(HttpSession session) {
+
+
+        User user=( ((User)session.getAttribute("user"))  );
+        BaseList baseList = blSql.getBaseList(newList.getBaseListId());
+
+        FilteredList filteredList = new FilteredList(baseList,newList);
+        filteredList.removeBaseListItems();
+
+        System.out.println("new list add");
+
+        ModelAndView m  = new ModelAndView();
+        return m;
+    }
+
+
+
 }

@@ -15,7 +15,7 @@
 
 
 
-<form:form method="POST" commandName="newList" action="${pa}" class="box login">
+<form:form method="POST" commandName="newList" action="new-list-add" class="box login">
 
 
 
