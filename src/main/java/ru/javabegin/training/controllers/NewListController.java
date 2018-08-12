@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ModelAndViewDefiningException;
 import ru.javabegin.training.impls.BaseListDaoSqlite;
+import ru.javabegin.training.impls.FilteredListDaoSqlite;
+import ru.javabegin.training.interfaces.FilteredListDao;
 import ru.javabegin.training.objects.User;
 import ru.javabegin.training.objects.softList.BaseList;
 import ru.javabegin.training.objects.softList.FilteredList;
@@ -39,6 +41,9 @@ public class NewListController {
 
     @Autowired
     private BaseListDaoSqlite blSql;
+
+    @Autowired
+    private FilteredListDaoSqlite flSql;
 
     @RequestMapping(value = "/new-list-create", method = RequestMethod.GET)
     public ModelAndView main(HttpSession session) {
@@ -71,6 +76,8 @@ public class NewListController {
 
         FilteredList filteredList = new FilteredList(baseList,newList);
         filteredList.removeBaseListItems();
+
+        flSql.insertFilteredList(filteredList);
 
         System.out.println("new list add");
 

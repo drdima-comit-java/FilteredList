@@ -2,21 +2,84 @@ package ru.javabegin.training.objects.softList;
 
 import ru.javabegin.training.objects.User;
 
-public class FilteredList  extends  SoftListAbstract{
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
+public class FilteredList {
+
+
 
 
     private BaseList baseList;
     private NewList newList;
+    private List<FilteredListDetails> fldList;
+
 
     public FilteredList(BaseList baseList, NewList newList) {
         this.baseList = baseList;
         this.newList = newList;
+        this.fldList = new ArrayList<FilteredListDetails>();
     }
+
+    public List<FilteredListDetails> getFldList() {
+        return fldList;
+    }
+
+
+    public List<FilteredListDetails> getFldList(long fldId) {
+
+        for (FilteredListDetails fld: this.fldList)
+        {
+            fld.setFlId((int)fldId);
+        }
+
+        return fldList;
+    }
+
+    public BaseList getBaseList() {
+        return baseList;
+    }
+
+    public NewList getNewList() {
+        return newList;
+    }
+
+
+
+
 
     public void removeBaseListItems()
     {
-        this.textToArray(this.baseList.getListContent());
+        String[] arBaseList = this.textToArray(this.baseList.getListContent());
+        String[] arNewList = this.textToArray(this.newList.getListContent());
+        String[] arFiltredList = arNewList.clone();
+
+        Collection collBaseList = new ArrayList(Arrays.asList(arBaseList));
+        Collection collNewList = new ArrayList(Arrays.asList(arNewList));
+        Collection<String> collFilteredList = new ArrayList(Arrays.asList(arFiltredList));
+
+        collFilteredList.removeAll( collBaseList );
+        //System.out.println( collFilteredList );
+        this.filtredListToFilteredListDetails(collFilteredList);
+
+
+
     }
+
+    private void filtredListToFilteredListDetails(Collection<String> collFilteredList)
+    {
+
+
+        for (String s : collFilteredList) {
+            //System.out.println("value= " + s);
+            this.fldList.add(new FilteredListDetails(s,0));
+        }
+    }
+
+
 
 
     private String[] textToArray(String textStr)
