@@ -2,6 +2,7 @@ package ru.javabegin.training.objects.softList;
 
 public class FilteredListDetails {
 
+    private int fldId;
     private String fldName;
     private int fldStatus;
     private int flId;
@@ -13,6 +14,14 @@ public class FilteredListDetails {
         this.fldName = fldName;
         this.fldStatus = fldStatus;
 
+    }
+
+    public int getFldId() {
+        return fldId;
+    }
+
+    public void setFldId(int fldId) {
+        this.fldId = fldId;
     }
 
     public String getFldName() {

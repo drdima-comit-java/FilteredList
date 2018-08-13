@@ -39,6 +39,8 @@ public class NewListController {
 
     private static final Logger logger = LoggerFactory.getLogger(NewListController.class);
 
+    //private FilteredList filteredList;
+
     @Autowired
     private BaseListDaoSqlite blSql;
 
@@ -66,7 +68,7 @@ public class NewListController {
 
 
     @RequestMapping(value = "/new-list-add", method = RequestMethod.POST)
-    public ModelAndView newListAdd(HttpSession session, @ModelAttribute NewList newList) {
+    public String newListAdd(HttpSession session, @ModelAttribute NewList newList) {
     //public ModelAndView newListAdd(HttpSession session, @ModelAttribute NewList newList) {
     //public ModelAndView newListAdd(HttpSession session) {
 
@@ -79,11 +81,16 @@ public class NewListController {
 
         flSql.insertFilteredList(filteredList);
 
-        System.out.println("new list add");
+        //this.filteredList = filteredList;
 
-        ModelAndView m  = new ModelAndView();
-        return m;
+        //System.out.println("new list add");
+        return "redirect:/filtered-list-view/" + filteredList.getFlId();
+
+
     }
+
+
+
 
 
 

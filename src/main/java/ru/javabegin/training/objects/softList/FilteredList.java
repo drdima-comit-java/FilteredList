@@ -15,8 +15,12 @@ public class FilteredList {
 
     private BaseList baseList;
     private NewList newList;
+    private int flId;
     private List<FilteredListDetails> fldList;
 
+    public FilteredList() {
+
+    }
 
     public FilteredList(BaseList baseList, NewList newList) {
         this.baseList = baseList;
@@ -24,17 +28,31 @@ public class FilteredList {
         this.fldList = new ArrayList<FilteredListDetails>();
     }
 
+
+    public int getFlId() {
+        return flId;
+    }
+
+    public void setFlId(int flId) {
+        if (this.flId==0)
+        this.flId = flId;
+    }
+
     public List<FilteredListDetails> getFldList() {
         return fldList;
     }
 
 
-    public List<FilteredListDetails> getFldList(long fldId) {
+    public List<FilteredListDetails> getFldList(int flId) {
 
         for (FilteredListDetails fld: this.fldList)
         {
-            fld.setFlId((int)fldId);
+            if (fld.getFlId()==0) {
+                fld.setFlId(flId);
+            }
         }
+
+        setFlId(flId);
 
         return fldList;
     }
