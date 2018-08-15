@@ -28,21 +28,21 @@ public class FilteredListDetailsController {
     private FilteredListDaoSqlite flSql;
 
 
-    @RequestMapping(value = "/filtered-list-view/{flId}", method = RequestMethod.GET)
-    public ModelAndView filteredListView(HttpSession session, @PathVariable int flId) {
-
-
+    @RequestMapping(value = "/filtered-list-details-view/{flId}", method = RequestMethod.GET)
+    public ModelAndView filteredListDetailsView(HttpSession session, @PathVariable int flId) {
         List<FilteredListDetails> listFld = flSql.getFilteredListDetails(flId);
 
-
-        ModelAndView m = new ModelAndView("filtered-list-view","listFld", listFld);
-
-
-
-        //Map<String, Object> map = new HashMap<String,Object>();
-        //map.put("blLists", blListsMap);
-        //m.addAllObjects(map);
-
+        session.setAttribute("flId",flId);
+        ModelAndView m = new ModelAndView("filtered-list-details-view","listFld", listFld);
         return m;
     }
+
+    @RequestMapping(value = "/filtered-list-details-delete/{fldId}", method = RequestMethod.GET)
+    public String filteredListDetailsDelete(HttpSession session, @PathVariable int fldId) {
+        //List<FilteredListDetails> listFld = flSql.getFilteredListDetails(flId);
+        //ModelAndView m = new ModelAndView("filtered-list-view","listFld", listFld);
+        flSql.deleteFldId(fldId);
+        return "redirect:/filtered-list-details-view/" + session.getAttribute("flId");
+    }
+
 }

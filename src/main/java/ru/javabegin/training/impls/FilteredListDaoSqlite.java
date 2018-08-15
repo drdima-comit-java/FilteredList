@@ -91,6 +91,12 @@ public class FilteredListDaoSqlite extends DaoAbstract implements FilteredListDa
         return jdbcTemplate.query(sql, new Object[]{flId}, new fldRowMapper() );
     }
 
+    public void deleteFldId(int fldId)
+    {
+        String sql="DELETE from filtered_list_details where fldId=?";
+        jdbcTemplate.update(sql, new Object[]{fldId} );
+    }
+
 
     private static final class fldRowMapper implements RowMapper<FilteredListDetails> {
         //@Override

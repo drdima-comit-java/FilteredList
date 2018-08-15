@@ -84,7 +84,7 @@ public class NewListController {
         //this.filteredList = filteredList;
 
         //System.out.println("new list add");
-        return "redirect:/filtered-list-view/" + filteredList.getFlId();
+        return "redirect:/filtered-list-details-view/" + filteredList.getFlId();
 
 
     }

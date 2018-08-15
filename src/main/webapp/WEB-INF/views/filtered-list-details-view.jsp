@@ -19,7 +19,7 @@
 <table>
     <c:forEach var="fld" items="${listFld}">
     <tr>
-        <td><a href="/filtered-list-detail-delete/${fld.fldId}">Delete</a></td>
+        <td><a href="/filtered-list-details-delete/${fld.fldId}">Delete</a></td>
         <td><c:out value="${fld.fldName}"/></td>
         <td><c:out value="${fld.fldStatus}"/></td>
     </tr>
