@@ -1,50 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@include file="layout/head.jsp" %>
 
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>
-</head>
+<body class="text-center">
+    <div class="container-fluid">
+        <div class="row justify-content-md-center">
+            <div class="col-md-12">
+                <form:form method="POST" commandName="reg-user" action="reg-user-add" class="form-signin">
+                    <h1 class="h3 mb-3 font-weight-normal">Registration Form</h1>
+                    <form:label path="userName" class="sr-only">Username:</form:label>
+                    <%--<form:input path="userName"/>--%>
+                    <input type="text" id="userName" name="userName" class="form-control" placeholder="username" required autofocus>
 
-<body>
 
-<form:form method="POST" commandName="reg-user" action="reg-user-add" class="box login">
-
-    <fieldset class="boxBody">
-
-        <h1>Registration</h1>
-
-        <form:label path="userName">Username:</form:label>
-        <form:input path="userName" />
-
-        <form:label path="password">Password:</form:label>
-        <form:password path="password"/>
+                    <form:label path="password" class="sr-only">Password:</form:label>
+                    <%--<form:password path="password"/>--%>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                        <%--<input type="submit" class="btnLogin" value="Register me" tabindex="4">--%>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Register me</button>
 
 
 
 
-    </fieldset>
 
-    <footer>
-
-
-        <input type="submit" class="btnLogin" value="Register me" tabindex="4">
-        <br>
-        <br>
-        <br>
+                </form:form>
+            </div>
+        </div>
 
 
-    </footer>
 
-</form:form>
+</div>
 
 
-</body>
-</html>
+
+
+
+<%@include file="layout/footer.jsp"%>
