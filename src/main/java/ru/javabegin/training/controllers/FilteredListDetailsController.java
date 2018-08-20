@@ -4,18 +4,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.javabegin.training.impls.FilteredListDaoSqlite;
-import ru.javabegin.training.objects.softList.FilteredList;
+import ru.javabegin.training.impls.FilteredListDetailsStatusesDaoSqlite;
 import ru.javabegin.training.objects.softList.FilteredListDetails;
-import ru.javabegin.training.objects.softList.NewList;
+
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -27,13 +26,20 @@ public class FilteredListDetailsController {
     @Autowired
     private FilteredListDaoSqlite flSql;
 
+    @Autowired
+    private FilteredListDetailsStatusesDaoSqlite fldsSql;
+
 
     @RequestMapping(value = "/filtered-list-details-view/{flId}", method = RequestMethod.GET)
     public ModelAndView filteredListDetailsView(HttpSession session, @PathVariable int flId) {
-        List<FilteredListDetails> listFld = flSql.getFilteredListDetails(flId);
+        List<FilteredListDetails> listFld = flSql.getFilteredListsDetails(flId);
 
         session.setAttribute("flId",flId);
         ModelAndView m = new ModelAndView("filtered-list-details-view","listFld", listFld);
+
+        Map<String, Object> map = new HashMap<String,Object>();
+        map.put("filteredListName", flSql.getFilteredList(flId).getFlName());
+        m.addAllObjects(map);
         return m;
     }
 
@@ -43,6 +49,19 @@ public class FilteredListDetailsController {
         //ModelAndView m = new ModelAndView("filtered-list-view","listFld", listFld);
         flSql.deleteFldId(fldId);
         return "redirect:/filtered-list-details-view/" + session.getAttribute("flId");
+    }
+
+
+
+    @RequestMapping(value = "/filtered-list-details-change-status/{fldId}")
+    public @ResponseBody String filteredListDetailsChangeStatus(@RequestBody @PathVariable int fldId) {
+        FilteredListDetails fld = flSql.getFilteredListDetails(fldId);
+
+
+
+        String result="ajax ok";
+        return result;
+
     }
 
 }

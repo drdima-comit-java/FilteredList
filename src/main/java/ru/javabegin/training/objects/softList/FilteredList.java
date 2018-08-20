@@ -3,10 +3,7 @@ package ru.javabegin.training.objects.softList;
 import ru.javabegin.training.objects.User;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class FilteredList {
 
@@ -17,6 +14,9 @@ public class FilteredList {
     private NewList newList;
     private int flId;
     private List<FilteredListDetails> fldList;
+    private int userId;
+    private String flName;
+    private Date flDateCreation;
 
     public FilteredList() {
 
@@ -25,9 +25,33 @@ public class FilteredList {
     public FilteredList(BaseList baseList, NewList newList) {
         this.baseList = baseList;
         this.newList = newList;
+        //this.userId = userId;
         this.fldList = new ArrayList<FilteredListDetails>();
     }
 
+    public Date getFlDateCreation() {
+        return flDateCreation;
+    }
+
+    public void setFlDateCreation(Date flDateCreation) {
+        this.flDateCreation = flDateCreation;
+    }
+
+    public String getFlName() {
+        return flName;
+    }
+
+    public void setFlName(String flName) {
+        this.flName = flName;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public int getFlId() {
         return flId;
@@ -69,7 +93,7 @@ public class FilteredList {
 
 
 
-    public void removeBaseListItems()
+    public void removeBaseListItems(int fldsIdInitial)
     {
         String[] arBaseList = this.textToArray(this.baseList.getListContent());
         String[] arNewList = this.textToArray(this.newList.getListContent());
@@ -81,19 +105,19 @@ public class FilteredList {
 
         collFilteredList.removeAll( collBaseList );
         //System.out.println( collFilteredList );
-        this.filtredListToFilteredListDetails(collFilteredList);
+        this.filtredListToFilteredListDetails(collFilteredList, fldsIdInitial);
 
 
 
     }
 
-    private void filtredListToFilteredListDetails(Collection<String> collFilteredList)
+    private void filtredListToFilteredListDetails(Collection<String> collFilteredList,int fldsId)
     {
 
 
         for (String s : collFilteredList) {
             //System.out.println("value= " + s);
-            this.fldList.add(new FilteredListDetails(s,0));
+            this.fldList.add(new FilteredListDetails(s,fldsId));
         }
     }
 

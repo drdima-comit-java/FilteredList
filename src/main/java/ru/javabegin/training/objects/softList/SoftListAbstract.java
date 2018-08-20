@@ -31,6 +31,9 @@ public abstract class SoftListAbstract {
     public User getUser() {
         return user;
     }
+    public int getUserId() {
+        return user.getIduser();
+    }
 
     public void setUser(User user) {
         this.user = user;

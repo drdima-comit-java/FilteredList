@@ -69,11 +69,17 @@ public class BaseListController {
 
 
         BaseList bl=this.sqlite.getBaseList(idbl);
-        ModelAndView m = new ModelAndView("base-list-create","baseList", bl) ;
+        //ModelAndView m = new ModelAndView("base-list-create","baseList", bl) ;
+        ModelAndView m = new ModelAndView("new-list-create","newList", bl) ;
+
         Map<String, Object> map = new HashMap<String,Object>();
-        map.put("submitMsg", "Update Base List");
-        map.put("pageName", "UPDATE Base List");
-        map.put("pageAction", "/base-list-update/"+idbl);
+
+        map.put("submitText", "Update Base List");
+        map.put("listMode", "baseList");
+        map.put("formAction", "/base-list-update/"+idbl);
+        //map.put("submitMsg", "Update Base List");
+        //map.put("pageName", "UPDATE Base List");
+        //map.put("pageAction", "/base-list-update/"+idbl);
         m.addAllObjects(map);
         return m;
     }
@@ -96,11 +102,18 @@ public class BaseListController {
         BaseList bl = new BaseList();
         bl.setListDate(new Date());
 
-        ModelAndView m =new ModelAndView("base-list-create","baseList", bl);
+        //ModelAndView m =new ModelAndView("base-list-create","baseList", bl);
+        ModelAndView m =new ModelAndView("new-list-create","newList", bl);
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("submitMsg", "Save my Base List");
-        map.put("pageName", "New Base List");
-        map.put("pageAction", "/base-lists-insert");
+
+        map.put("submitText", "Update Base List");
+        map.put("listMode", "baseList");
+        map.put("formAction", "/base-lists-insert");
+
+
+//        map.put("submitMsg", "Save my Base List");
+//        map.put("pageName", "New Base List");
+//        map.put("pageAction", "/base-lists-insert");
         m.addAllObjects(map);
         return m;
     }

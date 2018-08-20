@@ -6,15 +6,15 @@
 
 
 	<div class="container-fluid h-100">
-		<%--<div class="row justify-content-md-center">--%>
-			<%--<div class="col-md-6">--%>
-				<%--<c:if test="${user.status!=null}">--%>
-					<%--<div class="alert alert-danger" role="alert">--%>
-						<%--${user.status}--%>
-					<%--</div>--%>
-				<%--</c:if>--%>
-			<%--</div>--%>
-		<%--</div>--%>
+		<div class="row justify-content-center ">
+			<div class="col-md-3 col align-self-center">
+				<c:if test="${user.status!=null}">
+					<div class="alert alert-danger" role="alert">
+						${user.status}
+					</div>
+				</c:if>
+			</div>
+		</div>
 
 
 		<div class="row justify-content-center align-items-center  h-100">
@@ -23,7 +23,7 @@
 				<div class="text-center">
 					<img class="mb-4" src="<c:url value="/resources/i/bootstrap/bootstrap-solid.svg" />" alt="" width="72" height="72">
 				</div>
-				<h1 class="h3 mb-3 font-weight-normal">Please sign in aa</h1>
+				<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 				<!-- <fieldset class="boxBody"> -->
 
 

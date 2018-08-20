@@ -43,14 +43,15 @@ public class FilteredListDaoSqlite extends DaoAbstract implements FilteredListDa
         List<FilteredListDetails> fld=fl.getFldList();
 
 
-        String sql="INSERT INTO filtered_list (baseListContent, newListContent, flName, flDateCreation) " +
-                "                      VALUES (:baseListContent, :newListContent, :flName, :flDateCreation)";
+        String sql="INSERT INTO filtered_list (baseListContent, newListContent, flName, flDateCreation,userId) " +
+                "                      VALUES (:baseListContent, :newListContent, :flName, :flDateCreation, :userId)";
 
         MapSqlParameterSource params = new MapSqlParameterSource();
         params.addValue("baseListContent", bl.getListContent());
         params.addValue("newListContent", nl.getListContent());
         params.addValue("flName", nl.getListName());
         params.addValue("flDateCreation", new java.util.Date());
+        params.addValue("userId", nl.getUserId());
 
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -71,31 +72,87 @@ public class FilteredListDaoSqlite extends DaoAbstract implements FilteredListDa
 
 
 
-        String sql="INSERT INTO filtered_list_details (fldName, fldStatus, flId) " +
-                "VALUES (:fldName, :fldStatus, :flId)";
+        String sql="INSERT INTO filtered_list_details (fldName, fldsId, flId) " +
+                "VALUES (:fldName, :fldsId, :flId)";
 
 
         SqlParameterSource[] batch = SqlParameterSourceUtils.createBatch(fld.toArray());
         int[] updateCounts = namedParameterJdbcTemplate.batchUpdate(sql, batch);
 
-        System.out.println(updateCounts);
+        //System.out.println(updateCounts);
 
 
         //return updateCounts.length;
     }
 
 
-    public List<FilteredListDetails> getFilteredListDetails(int flId)
+    public List<FilteredListDetails> getFilteredListsDetails(int flId)
     {
-        String sql="select * from filtered_list_details where flId=?";
+        String sql="select * \n" +
+                "from filtered_list_details fld\n" +
+                "inner join filtered_list_details_statuses flds \n" +
+                "on \n" +
+                "fld.fldsId = flds.fldsId\n" +
+                "where flId=?";
         return jdbcTemplate.query(sql, new Object[]{flId}, new fldRowMapper() );
     }
+
+    public FilteredListDetails getFilteredListDetails(int fldId)
+    {
+        String sql="select * \n" +
+                "from filtered_list_details fld\n" +
+                "inner join filtered_list_details_statuses flds \n" +
+                "on \n" +
+                "fld.fldsId = flds.fldsId\n" +
+                "where fldId=?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{fldId}, new fldRowMapper() );
+    }
+
+
+
+
+    public List<FilteredList> getFilteredLists(int userId)
+    {
+        String sql="select * from filtered_list where userId=?";
+
+
+
+        return jdbcTemplate.query(sql, new Object[]{userId}, new flRowMapper() );
+    }
+
+    public FilteredList getFilteredList(int flId)
+    {
+        String sql="select * from filtered_list where flId=?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{flId}, new flRowMapper() );
+    }
+
+
+    public void flDelete(int flId)
+    {
+
+        String sql="DELETE from filtered_list_details where flId=?";
+        jdbcTemplate.update(sql, new Object[]{flId} );
+
+
+        sql="DELETE from filtered_list where flId=?";
+        jdbcTemplate.update(sql, new Object[]{flId} );
+
+
+    }
+
+
 
     public void deleteFldId(int fldId)
     {
         String sql="DELETE from filtered_list_details where fldId=?";
         jdbcTemplate.update(sql, new Object[]{fldId} );
     }
+
+
+
+
+
+
 
 
     private static final class fldRowMapper implements RowMapper<FilteredListDetails> {
@@ -105,11 +162,28 @@ public class FilteredListDaoSqlite extends DaoAbstract implements FilteredListDa
 
             fld.setFldId(rs.getInt("fldId"));
             fld.setFldName(rs.getString("fldName"));
-            fld.setFldStatus(rs.getInt("fldStatus"));
+            fld.setFldsId(rs.getInt("fldsId"));
+            fld.setFldsName(rs.getString("fldsName"));
+            fld.setFldsCss(rs.getString("fldsCss"));
             fld.setFlId(rs.getInt("flId"));
-
-
             return fld;
+        }
+
+    }
+
+    private static final class flRowMapper implements RowMapper<FilteredList> {
+        //@Override
+        public FilteredList mapRow(ResultSet rs, int rowNum) throws SQLException {
+            FilteredList fl= new FilteredList();
+
+            fl.setFlId(rs.getInt("flId"));
+            fl.setFlName(rs.getString("flName"));
+            fl.setFlDateCreation(rs.getTimestamp("flDateCreation"));
+            fl.setUserId(rs.getInt("userId"));
+            //fl.setUserId(rs.getInt("userId"));
+
+
+            return fl;
         }
 
     }

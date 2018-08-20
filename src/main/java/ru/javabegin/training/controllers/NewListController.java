@@ -13,11 +13,14 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ModelAndViewDefiningException;
 import ru.javabegin.training.impls.BaseListDaoSqlite;
 import ru.javabegin.training.impls.FilteredListDaoSqlite;
+import ru.javabegin.training.impls.FilteredListDetailsStatusesDaoSqlite;
 import ru.javabegin.training.interfaces.FilteredListDao;
+import ru.javabegin.training.interfaces.FilteredListDetailsStatusesDao;
 import ru.javabegin.training.objects.User;
 import ru.javabegin.training.objects.softList.BaseList;
 import ru.javabegin.training.objects.softList.FilteredList;
 import ru.javabegin.training.objects.softList.NewList;
+import ru.javabegin.training.objects.softList.Util;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -47,14 +50,30 @@ public class NewListController {
     @Autowired
     private FilteredListDaoSqlite flSql;
 
+    @Autowired
+    private FilteredListDetailsStatusesDaoSqlite fldsSql;
+
     @RequestMapping(value = "/new-list-create", method = RequestMethod.GET)
     public ModelAndView main(HttpSession session) {
+        //Util.sessionCheck(session);
+        Map<String, String> blListsMap;
+        try {
+            blListsMap = blSql.getBaseListsMap(((User) session.getAttribute("user")).getIduser());
+        }
+        catch (Exception e)
+        {
+            return new ModelAndView("login","user", new User());
 
+        }
+        NewList nl = new NewList();
+        User user=( ((User)session.getAttribute("user"))  );
 
-        Map<String,String> blListsMap = blSql.getBaseListsMap( ((User)session.getAttribute("user")).getIduser()  );
-        ModelAndView m = new ModelAndView("new-list-create","newList", new NewList());
+        nl.setUser(user);
+        ModelAndView m = new ModelAndView("new-list-create","newList", nl);
         Map<String, Object> map = new HashMap<String,Object>();
+        map.put("submitText", "Filter List");
         map.put("blLists", blListsMap);
+        map.put("formAction", "/new-list-add");
         m.addAllObjects(map);
 
         return m;
@@ -74,10 +93,15 @@ public class NewListController {
 
 
         User user=( ((User)session.getAttribute("user"))  );
-        BaseList baseList = blSql.getBaseList(newList.getBaseListId());
+        newList.setUser(user);
+        BaseList baseList = blSql.getBaseList(newList.getIdbl());
+
+
+        //find minimal fldsId by fldsSort
+        int fldsIdInitial = fldsSql.getInitialFldsId();
 
         FilteredList filteredList = new FilteredList(baseList,newList);
-        filteredList.removeBaseListItems();
+        filteredList.removeBaseListItems(fldsIdInitial);
 
         flSql.insertFilteredList(filteredList);
 
