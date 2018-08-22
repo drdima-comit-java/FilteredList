@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import ru.javabegin.training.impls.FilteredListDetailsStatusesDaoSqlite;
 import ru.javabegin.training.impls.UserDaoSqlite;
 import ru.javabegin.training.objects.User;
+import ru.javabegin.training.objects.softList.FilteredListDetailsStatuses;
 
 @Controller
 public class LoginController {
@@ -21,6 +23,9 @@ public class LoginController {
 
 	@Autowired
 	private UserDaoSqlite sqlite;
+
+	@Autowired
+	private FilteredListDetailsStatusesDaoSqlite fldssSql;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView main(HttpSession session) {
@@ -33,6 +38,10 @@ public class LoginController {
 		User dbUser = sqlite.checkUserPassword(user);
 		if (dbUser!=null) {
 			session.setAttribute("user",dbUser);
+
+			FilteredListDetailsStatuses fldss = new FilteredListDetailsStatuses(fldssSql);
+			session.setAttribute("fldss",fldss);
+
 			return new ModelAndView("main", "userName", user);
 		}else {
 			user.setStatus("Bad user name or password. Login again");

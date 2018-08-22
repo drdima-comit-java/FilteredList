@@ -113,7 +113,7 @@ public class FilteredListDaoSqlite extends DaoAbstract implements FilteredListDa
 
     public List<FilteredList> getFilteredLists(int userId)
     {
-        String sql="select * from filtered_list where userId=?";
+        String sql="select * from filtered_list where userId=?  order by flDateCreation desc";
 
 
 

@@ -32,6 +32,43 @@ Microsoft PowerPoint MUI (English) 2016
 
 
             </form:form>
+            <br>
+            <br>
+            <p>Sample data</p>
+            <textarea  rows="10" cols="80">Spark 2.8.3.960
+IntelliJ IDEA 2018.1.6
+Notepad++ (32-bit x86)
+Microsoft Office Professional Plus 2016
+MySQL Connector Net 8.0.11
+MySQL Connector J
+Java Auto Updater
+MySQL Notifier 1.1.7
+MySQL Examples and Samples 5.5
+Microsoft Office Professional Plus 2016
+Microsoft Access MUI (English) 2016
+Microsoft Excel MUI (English) 2016
+Microsoft PowerPoint MUI (English) 2016
+Microsoft Publisher MUI (English) 2016
+Microsoft Outlook MUI (English) 2016
+Microsoft Word MUI (English) 2016
+Microsoft Office Proofing Tools 2016 - English
+Outils de vérification linguistique 2016 de Microsoft Office - Français
+Herramientas de corrección de Microsoft Office 2016: español
+Microsoft Office Proofing (English) 2016
+Microsoft InfoPath MUI (English) 2016
+Microsoft Office Shared MUI (English) 2016
+Microsoft DCF MUI (English) 2016
+Microsoft OneNote MUI (English) 2016
+Microsoft Groove MUI (English) 2016
+Microsoft Office OSM MUI (English) 2016
+Microsoft Office OSM UX MUI (English) 2016
+Microsoft Office Shared Setup Metadata MUI (English) 2016
+Microsoft Access Setup Metadata MUI (English) 2016
+Microsoft Skype for Business MUI (English) 2016
+Microsoft Visual C++ 2008 Redistributable - x86 9.0.30729.6161
+MySQL Documents 5.5
+Microsoft Visual C++ 2015 Redistributable (x64) - 14.0.23026
+MySQL Installer - Community</textarea>
         </div>
     </div>
 </div>

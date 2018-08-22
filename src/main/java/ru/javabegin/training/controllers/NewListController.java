@@ -6,26 +6,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.ModelAndViewDefiningException;
 import ru.javabegin.training.impls.BaseListDaoSqlite;
 import ru.javabegin.training.impls.FilteredListDaoSqlite;
 import ru.javabegin.training.impls.FilteredListDetailsStatusesDaoSqlite;
-import ru.javabegin.training.interfaces.FilteredListDao;
-import ru.javabegin.training.interfaces.FilteredListDetailsStatusesDao;
 import ru.javabegin.training.objects.User;
-import ru.javabegin.training.objects.softList.BaseList;
-import ru.javabegin.training.objects.softList.FilteredList;
-import ru.javabegin.training.objects.softList.NewList;
-import ru.javabegin.training.objects.softList.Util;
+import ru.javabegin.training.objects.softList.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -98,7 +89,8 @@ public class NewListController {
 
 
         //find minimal fldsId by fldsSort
-        int fldsIdInitial = fldsSql.getInitialFldsId();
+        FilteredListDetailsStatuses fldss=( ((FilteredListDetailsStatuses)session.getAttribute("fldss"))  );
+        int fldsIdInitial = fldss.getMinStatusId();
 
         FilteredList filteredList = new FilteredList(baseList,newList);
         filteredList.removeBaseListItems(fldsIdInitial);
