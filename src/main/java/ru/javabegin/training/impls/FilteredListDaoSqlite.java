@@ -93,7 +93,8 @@ public class FilteredListDaoSqlite extends DaoAbstract implements FilteredListDa
                 "inner join filtered_list_details_statuses flds \n" +
                 "on \n" +
                 "fld.fldsId = flds.fldsId\n" +
-                "where flId=?";
+                "where flId=?\n" +
+                "ORDER BY fld.fldId";
         return jdbcTemplate.query(sql, new Object[]{flId}, new fldRowMapper() );
     }
 
@@ -146,6 +147,13 @@ public class FilteredListDaoSqlite extends DaoAbstract implements FilteredListDa
     {
         String sql="DELETE from filtered_list_details where fldId=?";
         jdbcTemplate.update(sql, new Object[]{fldId} );
+    }
+
+
+    public void updateFldStatus(int fldId, int fldsId)
+    {
+        String updateQuery = "update filtered_list_details set fldsId = ?  where fldId = ?";
+        jdbcTemplate.update(updateQuery, new Object[] {fldsId,fldId});
     }
 
 

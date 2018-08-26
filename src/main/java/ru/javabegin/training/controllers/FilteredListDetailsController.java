@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.javabegin.training.impls.FilteredListDaoSqlite;
 import ru.javabegin.training.impls.FilteredListDetailsStatusesDaoSqlite;
+import ru.javabegin.training.objects.softList.FilteredList;
 import ru.javabegin.training.objects.softList.FilteredListDetails;
+import ru.javabegin.training.objects.softList.FilteredListDetailsStatus;
+import ru.javabegin.training.objects.softList.FilteredListDetailsStatuses;
 
 
 import javax.servlet.http.HttpSession;
@@ -54,14 +57,24 @@ public class FilteredListDetailsController {
 
 
 
-    @RequestMapping(value = "/filtered-list-details-change-status/{fldId}")
-    public @ResponseBody String filteredListDetailsChangeStatus(@RequestBody @PathVariable int fldId) {
-        FilteredListDetails fld = flSql.getFilteredListDetails(fldId);
+    @RequestMapping(value = "/filtered-list-details-change-status/{fldsId}/{fldId}")
+    public @ResponseBody
+    FilteredListDetailsStatus filteredListDetailsChangeStatus(HttpSession session, @RequestBody @PathVariable int fldsId , @PathVariable int fldId) {
+        //FilteredListDetails fld = flSql.getFilteredListDetails(fldId);
+
+        //int flId = (Integer) session.getAttribute("flId");
+        FilteredListDetailsStatuses fldss = ((FilteredListDetailsStatuses)session.getAttribute("fldss"));
 
 
+        FilteredListDetailsStatus nextFlds = fldss.getNextStatus(fldsId);
 
-        String result="ajax ok";
-        return result;
+        //update db
+        flSql.updateFldStatus(fldId,nextFlds.getFldsId());
+
+
+        //String result="ajax ok";
+        //return result;
+        return nextFlds;
 
     }
 

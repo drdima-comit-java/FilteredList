@@ -41,4 +41,27 @@ public class FilteredListDetailsStatuses {
         return minStatusId;
 
     }
+
+
+
+
+
+    public FilteredListDetailsStatus getNextStatus(int fldsId)
+    {
+        Iterator itr = fldsList.iterator();
+        for (int i = 0; itr.hasNext(); i++) {
+            FilteredListDetailsStatus flds= (FilteredListDetailsStatus) itr.next();
+            if (flds.getFldsId()==fldsId)
+            {
+                if (itr.hasNext()) return (  (FilteredListDetailsStatus) itr.next()  );
+                else {
+                    return fldsList.iterator().next(); //first one
+                }
+            }
+        }
+        return null;
+    }
+
+
+
 }

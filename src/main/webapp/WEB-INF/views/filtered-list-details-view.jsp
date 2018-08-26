@@ -23,7 +23,14 @@
                     <tr>
                         <td><a href="/filtered-list-details-delete/${fld.fldId}" class="btn btn-danger" aria-label="Delete"><i class="fa fa-times" aria-hidden="true"></i></a></td>
                         <td><c:out value="${fld.fldName}"/></td>
-                        <td><button type="button" class="<c:out value="${fld.fldsCss}"/>"><c:out value="${fld.fldsName}"/></button></td>
+                        <td>
+                            <button type="button"
+                                    data-flds-id="<c:out value="${fld.fldsId}"/>"
+                                    data-fld-id="<c:out value="${fld.fldId}"/>"
+                                    class="<c:out value="${fld.fldsCss}"/>">
+                                    <c:out value="${fld.fldsName}"/>
+                            </button>
+                        </td>
                     </tr>
                     </c:forEach>
                 </tbody>
