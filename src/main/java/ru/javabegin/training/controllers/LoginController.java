@@ -32,7 +32,7 @@ public class LoginController {
 		return new ModelAndView("login", "user", new User());
 	}
 
-	@RequestMapping(value = "/main", method = {  RequestMethod.POST})
+	@RequestMapping(value = "/home", method = {  RequestMethod.POST})
 	public ModelAndView checkUser(HttpSession session, @ModelAttribute User user) {
 
 		User dbUser = sqlite.checkUserPassword(user);
@@ -50,7 +50,7 @@ public class LoginController {
 	}
 
 
-	@RequestMapping(value = "/home", method = { RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/home", method = { RequestMethod.GET})
 	public ModelAndView home(HttpSession session) {
 		User user = ((User) session.getAttribute("user")  );
 		return new ModelAndView("main", "userName", user);

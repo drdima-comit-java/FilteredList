@@ -84,3 +84,51 @@ $(
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+//navbar highlight
+$(function() {
+    $(".nav a").on("click", function () {
+
+        $(".nav").find(".active").removeClass("active");
+
+        console.log($(this).parent().text());
+        $(this).parent().addClass("active");
+    });
+});
+*/
+
+
+//navbar hightlight by url
+$(document).ready(function() {
+    // get current URL path and assign 'active' class
+    var pathname = window.location.pathname;
+    $('.nav > li > a[href="'+pathname+'"]').parent().addClass('active');
+})
+
+
+
+

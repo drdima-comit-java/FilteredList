@@ -7,8 +7,8 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+        <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item">
                 <a class="nav-link" href="/home"><i class="fa fa-home" style="font-size:30px"></i>
                     <span class="sr-only">(current)</span>
                 </a>
