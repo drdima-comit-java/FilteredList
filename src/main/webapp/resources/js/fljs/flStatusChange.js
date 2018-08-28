@@ -71,6 +71,8 @@ $(
                         ($(element)).text(flds.fldsName);
                         ($(element)).attr('class',flds.fldsCss);
 
+                        runApp();
+
                     }
 
 
@@ -83,6 +85,16 @@ $(
  );
 
 
+function runApp()
+{
+    alert ('in runapp');
+    //WshShell = new ActiveXObject("WScript.Shell");
+    //var ret= WshShell.Run("c:/__testjs/test.bat param1", 1, true);
+    //var ret= WshShell.Run("\\\\server\\u_ro\\write.exe", 1, false);
+
+    window.open('run.bat')
+    alert (ret);
+}
 
 
 

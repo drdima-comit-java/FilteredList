@@ -30,11 +30,38 @@
 <link href="<c:url value="/resources/css/signin.css" />" rel="stylesheet">
 
 
-    <!--fl scripts-->
-    <script src="<c:url value="/resources/js/fljs/flStatusChange.js" />"></script>
+
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <!-- ActiveX setting -->
+    <HTA:APPLICATION ID="oMyApp"
+
+                     APPLICATIONNAME="Application Executer"
+
+                     BORDER="no"
+
+                     CAPTION="no"
+
+                     SHOWINTASKBAR="yes"
+
+                     SINGLEINSTANCE="yes"
+
+                     SYSMENU="yes"
+
+                     SCROLL="no"
+
+                     WINDOWSTATE="normal">
+
+
+
+        <!--fl scripts-->
+        <script src="<c:url value="/resources/js/fljs/flStatusChange.js" />"></script>
+
+
+
 <title>Dima's Filtered List</title>
 </head>
 
