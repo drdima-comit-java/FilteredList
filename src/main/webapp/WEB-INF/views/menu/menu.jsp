@@ -25,6 +25,10 @@
             <a class="btn btn-info ml-auto" href="/new-list-create">Create a new Filtered List</a>
             </li>
 
+            <li class="nav-item">
+            <a class="nav-link" href="/app-setup">Application setup</a>
+            </li>
+
         </ul>
         <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
         <ul class="navbar-nav text-right">

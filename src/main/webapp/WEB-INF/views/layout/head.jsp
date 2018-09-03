@@ -36,24 +36,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
-    <!-- ActiveX setting -->
-    <HTA:APPLICATION ID="oMyApp"
-
-                     APPLICATIONNAME="Application Executer"
-
-                     BORDER="no"
-
-                     CAPTION="no"
-
-                     SHOWINTASKBAR="yes"
-
-                     SINGLEINSTANCE="yes"
-
-                     SYSMENU="yes"
-
-                     SCROLL="no"
-
-                     WINDOWSTATE="normal">
 
 
 

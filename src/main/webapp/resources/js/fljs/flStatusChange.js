@@ -25,7 +25,7 @@ var printError = function(error, explicit) {
     alert( error.name + ':' + error.message);
 }
 
-
+var inProgress=false;
 
 $(
     function()
@@ -38,45 +38,56 @@ $(
             //     alert(    ($(this).data('flds-id'))   );
             // },
             {
-                var element = this;
-                $.ajax(
-                {
-                    type: 'POST',
-                    contentType: 'application/json; charset=utf-8',
-                    url: '/filtered-list-details-change-status/' + ($(this).data('flds-id')) + '/' + ($(this).data('fld-id')),
-                    dataType: 'json',
-                    //dataType: 'html',
-                    //data: JSON.stringify(search),
-                    data: "",
-                    success: function (flds)
-                    {
-                        //alert(flds);
-                        try {
-                            //var fld = JSON.parse(result);
+                if (inProgress==false || ($(this).data('flds-sort'))==2 ) {
+                    var element = this;
+                    $.ajax(
+                        {
+                            type: 'POST',
+                            contentType: 'application/json; charset=utf-8',
+                            url: '/filtered-list-details-change-status/' + ($(this).data('flds-id')) + '/' + ($(this).data('fld-id')),
+                            dataType: 'json',
+                            //dataType: 'html',
+                            //data: JSON.stringify(search),
+                            data: "",
+                            success: function (flds) {
+                                //alert(flds);
+                                try {
+                                    //var fld = JSON.parse(result);
 
-                        }
-                        catch (e) {
-                            if (e instanceof SyntaxError) {
-                                printError(e, true);
-                            } else {
-                                printError(e, false);
+                                }
+                                catch (e) {
+                                    if (e instanceof SyntaxError) {
+                                        printError(e, true);
+                                    } else {
+                                        printError(e, false);
+                                    }
+                                }
+
+
+                                //alert(flds.fldsName);
+                                //alert(flds.fldsCss);
+                                ($(element)).data('flds-id', flds.fldsId);
+                                ($(element)).data('flds-sort', flds.fldsSort);
+                                ($(element)).text(flds.fldsName);
+                                ($(element)).attr('class', flds.fldsCss);
+
+                                if (flds.fldsSort == 2) {
+                                    inProgress = true;
+                                    if ( ($(element).data('fld-apps-path'))) {
+                                        runApp(($(element).data('fld-id')));
+                                    }
+                                }
+                                else {
+                                    inProgress = false;
+                                }
                             }
-                        }
 
 
-
-                        //alert(flds.fldsName);
-                        //alert(flds.fldsCss);
-                        ($(element)).data('flds-id',flds.fldsId);
-                        ($(element)).text(flds.fldsName);
-                        ($(element)).attr('class',flds.fldsCss);
-
-                        runApp();
-
-                    }
-
-
-                });
+                        });
+                }
+                else{
+                    alert ("Instalation in progress");
+                }
                 //alert(    ($(this).data('flds-id'))   );
             }
 
@@ -85,17 +96,32 @@ $(
  );
 
 
-function runApp()
+function runApp(fldId)
 {
-    alert ('in runapp');
+    //alert ('in runapp');
     //WshShell = new ActiveXObject("WScript.Shell");
     //var ret= WshShell.Run("c:/__testjs/test.bat param1", 1, true);
     //var ret= WshShell.Run("\\\\server\\u_ro\\write.exe", 1, false);
 
-    window.open('run.bat')
-    alert (ret);
+    //window.open('/resources/tmp/run.bat', "", "width=0,height=0")
+    window.open('/download/' + fldId, "", "width=0,height=0")
+    //alert (ret);
 }
 
+
+
+$(
+    function()
+    {
+        $('.open-AddAppDialog').on('click', function e() {
+            var myAppName = $(this).data('apps-name');
+            alert(myAppName);
+            $(".modal-body #appsName").val(myAppName);
+            // As pointed out in comments,
+            // it is superfluous to have to manually call the modal.
+            // $('#addBookDialog').modal('show');
+        })
+});
 
 
 

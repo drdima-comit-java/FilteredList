@@ -64,7 +64,13 @@ public abstract class SoftListAbstract {
     }
 
     public String getListContent() {
-        return listContent;
+
+        try {
+            return listContent.replaceAll("\\s+\n", "\n").trim();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void setListContent(String listContent) {

@@ -821,152 +821,175 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="207" parent="6" name="base_list"/>
-    <table id="208" parent="6" name="filtered_list"/>
-    <table id="209" parent="6" name="filtered_list_details"/>
-    <table id="210" parent="6" name="filtered_list_details_statuses"/>
-    <table id="211" parent="6" name="users"/>
-    <column id="212" parent="207" name="idbl">
+    <table id="207" parent="6" name="apps"/>
+    <table id="208" parent="6" name="base_list"/>
+    <table id="209" parent="6" name="filtered_list"/>
+    <table id="210" parent="6" name="filtered_list_details"/>
+    <table id="211" parent="6" name="filtered_list_details_statuses"/>
+    <table id="212" parent="6" name="users"/>
+    <column id="213" parent="207" name="appsId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="213" parent="207" name="iduser">
+    <column id="214" parent="207" name="appsName">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="215" parent="207" name="appsPath">
+      <Position>3</Position>
+      <DataType>varchar(500)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="216" parent="207" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>appsId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="217" parent="208" name="idbl">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="218" parent="208" name="iduser">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="214" parent="207" name="blName">
+    <column id="219" parent="208" name="blName">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="215" parent="207" name="blContent">
+    <column id="220" parent="208" name="blContent">
       <Position>4</Position>
       <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="216" parent="207" name="blDateCreation">
+    <column id="221" parent="208" name="blDateCreation">
       <Position>5</Position>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="217" parent="207" name="PRIMARY">
+    <key id="222" parent="208" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idbl</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="218" parent="208" name="flId">
+    <column id="223" parent="209" name="flId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="219" parent="208" name="baseListContent">
+    <column id="224" parent="209" name="baseListContent">
       <Position>2</Position>
       <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="220" parent="208" name="newListContent">
+    <column id="225" parent="209" name="newListContent">
       <Position>3</Position>
       <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="221" parent="208" name="flName">
+    <column id="226" parent="209" name="flName">
       <Position>4</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="222" parent="208" name="flDateCreation">
+    <column id="227" parent="209" name="flDateCreation">
       <Position>5</Position>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="223" parent="208" name="userId">
+    <column id="228" parent="209" name="userId">
       <Position>6</Position>
-      <DataType>int(11)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="224" parent="208" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>flId</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="225" parent="209" name="fldId">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="226" parent="209" name="fldName">
-      <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="227" parent="209" name="fldsId">
-      <Position>3</Position>
-      <DataType>int(11)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="228" parent="209" name="flId">
-      <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="229" parent="209" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>fldId</ColNames>
+      <ColNames>flId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="230" parent="210" name="fldsId">
+    <column id="230" parent="210" name="fldId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="231" parent="210" name="fldsName">
+    <column id="231" parent="210" name="fldName">
       <Position>2</Position>
-      <DataType>varchar(45)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="232" parent="210" name="fldsCss">
+    <column id="232" parent="210" name="fldsId">
       <Position>3</Position>
-      <DataType>varchar(80)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="233" parent="210" name="fldsSort">
+    <column id="233" parent="210" name="flId">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="234" parent="210" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>fldsId</ColNames>
+      <ColNames>fldId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="235" parent="211" name="iduser">
+    <column id="235" parent="211" name="fldsId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="236" parent="211" name="userName">
+    <column id="236" parent="211" name="fldsName">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="237" parent="211" name="password">
+    <column id="237" parent="211" name="fldsCss">
+      <Position>3</Position>
+      <DataType>varchar(80)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="238" parent="211" name="fldsSort">
+      <Position>4</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="239" parent="211" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>fldsId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="240" parent="212" name="iduser">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="241" parent="212" name="userName">
+      <Position>2</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="242" parent="212" name="password">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="238" parent="211" name="PRIMARY">
+    <key id="243" parent="212" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>iduser</ColNames>
       <Primary>1</Primary>

@@ -4,7 +4,13 @@
 
 <div class="container-fluid ">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-8">
+            <br>
+
+            <a class="btn btn-lg btn-primary btn-block" href="/download/-1">Get List from this computer</a>
+            <br>
+
+            <br>
 
             <form:form method="POST" commandName="newList" action="${formAction}">
                 <%--<h1>${pageName}</h1>--%>

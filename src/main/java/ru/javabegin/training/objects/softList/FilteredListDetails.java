@@ -5,7 +5,9 @@ public class FilteredListDetails {
     private int flId;
     private int fldId;
     private String fldName;
+    private String appsPath;
     private int fldsId;
+    private int fldsSort;
     private String fldsName;
     private String fldsCss;
 
@@ -18,6 +20,22 @@ public class FilteredListDetails {
         this.fldName = fldName;
         this.fldsId = fldsId;
 
+    }
+
+    public int getFldsSort() {
+        return fldsSort;
+    }
+
+    public void setFldsSort(int fldsSort) {
+        this.fldsSort = fldsSort;
+    }
+
+    public String getAppsPath() {
+        return appsPath;
+    }
+
+    public void setAppsPath(String appsPath) {
+        this.appsPath = appsPath;
     }
 
     public String getFldsCss() {

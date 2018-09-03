@@ -95,8 +95,23 @@ public class FilteredListDaoSqlite extends DaoAbstract implements FilteredListDa
                 "fld.fldsId = flds.fldsId\n" +
                 "where flId=?\n" +
                 "ORDER BY fld.fldId";
+
         return jdbcTemplate.query(sql, new Object[]{flId}, new fldRowMapper() );
     }
+
+
+    public List<FilteredListDetails> getFilteredListsDetailsWithPath(List<FilteredListDetails> fldList,AppsListDaoSqlite appsSql)
+    {
+        for (int i = 0; i < fldList.size(); i++) {
+            String appsName = fldList.get(i).getFldName();
+            String appsPath = appsSql.getPathbyName(appsName);
+            //if (appsPath==null) appsPath="Path not found";
+            fldList.get(i).setAppsPath(appsPath);
+        }
+
+        return fldList;
+    }
+
 
     public FilteredListDetails getFilteredListDetails(int fldId)
     {
@@ -171,6 +186,7 @@ public class FilteredListDaoSqlite extends DaoAbstract implements FilteredListDa
             fld.setFldId(rs.getInt("fldId"));
             fld.setFldName(rs.getString("fldName"));
             fld.setFldsId(rs.getInt("fldsId"));
+            fld.setFldsSort(rs.getInt("fldsSort"));
             fld.setFldsName(rs.getString("fldsName"));
             fld.setFldsCss(rs.getString("fldsCss"));
             fld.setFlId(rs.getInt("flId"));
