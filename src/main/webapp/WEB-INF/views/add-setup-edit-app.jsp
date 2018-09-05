@@ -10,7 +10,7 @@
 			</div>
 
 			<!-- Modal body -->
-			<form:form method="POST" action="/add-app" class="form-signin">
+			<form:form id="form-modal-body" method="POST" action="/add-app" class="form-signin">
 				<div class="modal-body">
 
 					<input type="text" id="appsName" name="appsName" class="form-control" placeholder="Application Name" required autofocus>

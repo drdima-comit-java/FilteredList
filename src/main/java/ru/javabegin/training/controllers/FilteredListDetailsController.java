@@ -135,7 +135,7 @@ public class FilteredListDetailsController {
         else{
             String fldName = flSql.getFilteredListDetails(fldId).getFldName();
             String appsPath=appsSql.getPathbyName(fldName);
-            return appsPath;
+            return '"' + appsPath + '"';
         }
         //return null;
 
@@ -151,7 +151,11 @@ public class FilteredListDetailsController {
 //                "\n" +
 //                "start  notepad soft.txt" +
 //                "";
-        myBat="wmic product get name>soft.txt" +
+//        myBat="wmic product get name>soft.txt" +
+//                "\n" +
+//                "start notepad soft.txt";
+
+        myBat="powershell \"Get-ItemProperty HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\* | Select-Object DisplayName\">soft.txt" +
                 "\n" +
                 "start notepad soft.txt";
         return  myBat;

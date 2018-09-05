@@ -14,15 +14,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/base-lists">My Base Lists</a>
+                <a class="nav-link" href="/base-lists">My Excluded Soft Lists</a>
             </li>
 
             <li class="nav-item">
-            <a class="nav-link" href="/filtered-lists-view">My Filtered Lists</a>
+            <a class="nav-link" href="/filtered-lists-view">My Computers Lists</a>
             </li>
 
             <li class="nav-item">
-            <a class="btn btn-info ml-auto" href="/new-list-create">Create a new Filtered List</a>
+            <a class="btn btn-info ml-auto" href="/new-list-create">Create a new Computer</a>
             </li>
 
             <li class="nav-item">

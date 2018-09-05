@@ -18,10 +18,12 @@
 
 
 		<div class="row justify-content-center align-items-center  h-100">
-			<div class="col col-md-2 col align-self-center">
+			<div class="col col-md-3 col align-self-center">
 			<form:form method="POST" commandName="user" action="/home" class="form-signin">
 				<div class="text-center">
-					<img class="mb-4" src="<c:url value="/resources/i/bootstrap/bootstrap-solid.svg" />" alt="" width="72" height="72">
+					<%--<img class="mb-4" src="<c:url value="/resources/i/bootstrap/bootstrap-solid.svg" />" alt="" width="72" height="72">--%>
+					<img class="mb-4" src="<c:url value="/resources/i/drInstaller/drInstaller.png" />" alt="DRInstaller">
+
 				</div>
 				<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 				<!-- <fieldset class="boxBody"> -->

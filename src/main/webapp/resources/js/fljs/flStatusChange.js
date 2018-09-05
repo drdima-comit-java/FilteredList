@@ -104,7 +104,7 @@ function runApp(fldId)
     //var ret= WshShell.Run("\\\\server\\u_ro\\write.exe", 1, false);
 
     //window.open('/resources/tmp/run.bat', "", "width=0,height=0")
-    window.open('/download/' + fldId, "", "width=0,height=0")
+    window.open('/download/' + fldId, "_self");
     //alert (ret);
 }
 
@@ -115,8 +115,9 @@ $(
     {
         $('.open-AddAppDialog').on('click', function e() {
             var myAppName = $(this).data('apps-name');
-            alert(myAppName);
+            //alert(myAppName);
             $(".modal-body #appsName").val(myAppName);
+            //$("#form-modal-body").attr("action", "/add-app/filtered-list-details-view/73");;
             // As pointed out in comments,
             // it is superfluous to have to manually call the modal.
             // $('#addBookDialog').modal('show');

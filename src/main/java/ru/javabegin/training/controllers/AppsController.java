@@ -19,7 +19,11 @@ import ru.javabegin.training.objects.softList.FilteredListDetails;
 import ru.javabegin.training.objects.softList.FilteredListDetailsStatus;
 import ru.javabegin.training.objects.softList.FilteredListDetailsStatuses;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,10 +55,20 @@ public class AppsController {
 
 
     @RequestMapping(value = "/add-app", method = RequestMethod.POST)
-    public String appAdd(HttpSession session, @ModelAttribute Apps apps) {
+    public String appAdd(HttpSession session, @ModelAttribute Apps apps, HttpServletRequest request ) {
 
         appsSql.addApp(apps.getAppsName(),apps.getAppsPath());
-        return "redirect:/app-setup";
+
+        String refererURI="";
+        //String referrer = request.getHeader("referer");
+        try {
+            refererURI = new URI(request.getHeader("referer")).getPath();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } finally {
+        }
+        //return "redirect:/app-setup";
+        return "redirect:" + refererURI;
     }
 
     @RequestMapping(value = "/delete-app/{appsId}", method = RequestMethod.GET)

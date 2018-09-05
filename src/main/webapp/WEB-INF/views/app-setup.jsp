@@ -41,7 +41,7 @@
 				<!--Table body-->
 			</table>
 			<!--Table-->
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Application</button>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalAddApp">Add Application</button>
 
 
 

@@ -5,13 +5,22 @@
 <div class="container-fluid ">
 	<div class="row">
 		<div class="col-md-10">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem dolores eum facere itaque maiores nisi porro tempore unde. Accusamus ad amet architecto beatae eveniet excepturi explicabo fugiat neque officia pariatur!
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem dolores eum facere itaque maiores nisi porro tempore unde. Accusamus ad amet architecto beatae eveniet excepturi explicabo fugiat neque officia pariatur!
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem dolores eum facere itaque maiores nisi porro tempore unde. Accusamus ad amet architecto beatae eveniet excepturi explicabo fugiat neque officia pariatur!
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem dolores eum facere itaque maiores nisi porro tempore unde. Accusamus ad amet architecto beatae eveniet excepturi explicabo fugiat neque officia pariatur!
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem dolores eum facere itaque maiores nisi porro tempore unde. Accusamus ad amet architecto beatae eveniet excepturi explicabo fugiat neque officia pariatur!
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem dolores eum facere itaque maiores nisi porro tempore unde. Accusamus ad amet architecto beatae eveniet excepturi explicabo fugiat neque officia pariatur!
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem dolores eum facere itaque maiores nisi porro tempore unde. Accusamus ad amet architecto beatae eveniet excepturi explicabo fugiat neque officia pariatur!
+			This system will help you to install new applications on a new computers.<br>
+			<br>
+			1. "My Excluded soft Lists" shows lists of programs that you need to exclude.<br>
+			<br>
+			2. "My Computer Lists" shows computers that you are working on.<br>
+			<br>
+			3. "Create a new Computer" allows to create a new list of software.<br>
+			   The software list you should get from the old computer.<br>
+			<br>
+			4. "Application Setup" is a list of software names and paths to the installer file.<br>
+			<br>
+			<br>
+			<br>
+			If you have any questions, please call tech support<br>
+
+
 		</div>
 	</div>
 </div>
