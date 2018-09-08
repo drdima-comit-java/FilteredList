@@ -11,14 +11,14 @@
 </style>
 <div class="container-fluid ">
     <div class="row">
-        <div class="col-sm-5">
+        <div class="col-sm-10">
             <h1>Filtered List: ${filteredListName}</h1>
             <table id="tablePreview" class="table table-striped table-hover">
                 <!--Table head-->
                 <thead>
                     <tr class="row">
                         <th class="col-sm-1">X</th>
-                        <th class="col-sm-3">Name</th>
+                        <th class="col-sm-8">Name</th>
                         <th class="col-sm-3">Status</th>
 
                     </tr>
