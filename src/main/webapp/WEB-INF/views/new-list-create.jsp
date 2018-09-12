@@ -6,8 +6,10 @@
     <div class="row">
         <div class="col-md-8">
             <br>
+            <div class="col-md-3">
 
             <a class="btn btn-lg btn-primary btn-block" href="/download/-1">Get List from this computer</a>
+            </div>
             <br>
 
             <br>
@@ -33,14 +35,16 @@
                 >${newList.listContent}</textarea>
 
                 <c:if test="${listMode!='baseList'}">
-                    <form:label path="idbl">Exclude from Base List</form:label>
+                    <form:label path="idbl">Exclude from exclude list</form:label>
                     <form:select id="idbl" path="idbl" items="${blLists}"  class="form-control" />
                 </c:if>
+                <br>
+                <br>
 
                 <%--<input type="submit" class="btnLogin" value="filter this list with base list" tabindex="4">--%>
-
+                <div class="col-md-3">
                 <button class="btn btn-lg btn-primary btn-block" type="submit">${submitText}</button>
-
+                </div>
 
             </form:form>
             <br>
