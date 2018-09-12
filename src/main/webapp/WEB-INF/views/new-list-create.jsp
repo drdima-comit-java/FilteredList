@@ -6,7 +6,9 @@
     <div class="row">
         <div class="col-md-8">
             <br>
-            <div class="col-md-3">
+
+            <div class="col-md-5">
+
 
             <a class="btn btn-lg btn-primary btn-block" href="/download/-1">Get List from this computer</a>
             </div>
